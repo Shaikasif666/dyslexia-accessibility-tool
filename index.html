@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dyslexia Accessibility Tool</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Dyslexia Accessibility Tool</h1>
+    <p>Enhance your reading experience with customizable text adjustments and word highlighting.</p>
+
+    <div class="demo">
+      <p id="demo-text">Hover over the text below to see the word highlighting and adjustments:</p>
+      <div id="text-content">
+        <p class="highlightable">This is an example paragraph to demonstrate the tool.</p>
+        <p class="highlightable">You can customize font size, line spacing, and contrast.</p>
+        <p class="highlightable">Hover over the text to see it highlighted.</p>
+      </div>
+    </div>
+
+    <div class="controls">
+      <label for="font-size">Font Size:</label>
+      <input type="range" id="font-size" min="14" max="36" value="20" />
+      
+      <label for="line-spacing">Line Spacing:</label>
+      <input type="range" id="line-spacing" min="1" max="3" value="1.5" step="0.1" />
+      
+      <button id="read-text">Read Text Aloud</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
