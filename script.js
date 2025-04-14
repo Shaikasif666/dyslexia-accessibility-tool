@@ -2,6 +2,17 @@ const textContent = document.getElementById('text-content');
 const fontSizeInput = document.getElementById('font-size');
 const lineSpacingInput = document.getElementById('line-spacing');
 const readTextButton = document.getElementById('read-text');
+const toggleFontButton = document.getElementById('toggle-font');
+
+// Focus Mode: Highlight lines on hover
+textContent.classList.add('focus-mode');
+
+// Toggle Dyslexia-Friendly Font
+let dyslexiaFontEnabled = false;
+toggleFontButton.addEventListener('click', () => {
+  dyslexiaFontEnabled = !dyslexiaFontEnabled;
+  document.body.classList.toggle('dyslexia-font', dyslexiaFontEnabled);
+});
 
 // Word Highlighting on Hover
 textContent.addEventListener('mouseover', function(e) {
@@ -29,10 +40,34 @@ lineSpacingInput.addEventListener('input', function() {
   });
 });
 
-// Text-to-Speech Feature
+// Text-to-Speech Feature with Sentence Highlighting
 readTextButton.addEventListener('click', function() {
   const text = document.querySelectorAll('.highlightable');
   const utterance = new SpeechSynthesisUtterance();
-  utterance.text = Array.from(text).map(el => el.innerText).join(' ');
-  window.speechSynthesis.speak(utterance);
+  const sentences = Array.from(text).map(el => el.innerText).join(' ').match(/[^\.!\?]+[\.!\?]+/g) || [text];
+  let sentenceIndex = 0;
+
+  // Function to speak and highlight the current sentence
+  function speakSentence() {
+    if (sentenceIndex >= sentences.length) return;
+
+    utterance.text = sentences[sentenceIndex];
+    window.speechSynthesis.speak(utterance);
+
+    // Highlight the current sentence
+    text.forEach((el, index) => {
+      el.style.backgroundColor = 'transparent';
+      if (index === sentenceIndex) {
+        el.style.backgroundColor = '#d3f8d3'; // Highlight current sentence
+      }
+    });
+
+    sentenceIndex++;
+  }
+
+  // Start reading
+  speakSentence();
+  utterance.onend = function() {
+    speakSentence(); // Move to the next sentence when the current one ends
+  };
 });

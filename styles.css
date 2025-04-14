@@ -1,3 +1,4 @@
+/* Base Styling */
 body {
     font-family: Arial, sans-serif;
     background-color: #f7f7f7;
@@ -6,21 +7,25 @@ body {
     margin: 0;
   }
   
+  /* Container Styling */
   .container {
     max-width: 800px;
     margin: 0 auto;
     text-align: center;
   }
   
+  /* Heading Styling */
   h1 {
     font-size: 36px;
     margin-bottom: 20px;
   }
   
+  /* Demo Section */
   .demo {
     margin-bottom: 30px;
   }
   
+  /* Highlightable Text Styling */
   .highlightable {
     font-size: 20px;
     margin: 10px 0;
@@ -28,19 +33,23 @@ body {
     transition: background-color 0.3s ease;
   }
   
+  /* Hover Effect for Highlightable Text */
   .highlightable:hover {
     background-color: #fffb87;
   }
   
+  /* Controls Section */
   .controls {
     margin-top: 20px;
   }
   
+  /* Range Inputs Styling */
   input[type="range"] {
     width: 100%;
     margin: 10px 0;
   }
   
+  /* Button Styling */
   button {
     padding: 10px 20px;
     background-color: #4caf50;
@@ -49,7 +58,23 @@ body {
     cursor: pointer;
   }
   
+  /* Button Hover Effect */
   button:hover {
     background-color: #45a049;
+  }
+  
+  /* Dyslexia Font Style */
+  .dyslexia-font {
+    font-family: 'OpenDyslexic', Arial, sans-serif;
+  }
+  
+  /* Focus Mode (Highlight Text on Hover) */
+  .focus-mode .highlightable {
+    opacity: 0.3;
+    transition: opacity 0.2s ease;
+  }
+  
+  .focus-mode .highlightable:hover {
+    opacity: 1;
   }
   
